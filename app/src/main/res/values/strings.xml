@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Dream Catcher</string>
+    <string name="s_icon_description">Splash Icon</string>
+    <string name="copyright"><![CDATA[© 2019 Ola & Schatze]]></string>
+    <string name="splash_name">dreamcatcher</string>
+    <string name="date">FRI, MAY 16</string>
+    <string name="greeting_msg">Hello Daniel</string>
+    <string name="dash_header_1">Upcoming tasks and goals</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="create_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
