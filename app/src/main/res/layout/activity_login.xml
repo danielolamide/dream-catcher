@@ -76,7 +76,7 @@
         app:layout_constraintTop_toBottomOf="@+id/signInEmail" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/signIn_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -111,7 +111,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/signIn_btn"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -125,12 +125,13 @@
         android:text="@string/sign_up"
         android:textColor="@color/royal"
         android:textSize="@dimen/body2"
+        android:onClick="startSignUp"
         app:fontFamily="@font/montserrat"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/signIn_btn"
         app:layout_constraintVertical_bias="1.0" />
 
     <android.support.constraint.Guideline

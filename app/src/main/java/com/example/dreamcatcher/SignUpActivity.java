@@ -5,15 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class LoginActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sign_up);
     }
-    public void startSignUp(View v){
-        Intent signUpActivity = new Intent(LoginActivity.this,SignUpActivity.class);
-        startActivity(signUpActivity);
+    public void startSignIn(View v){
+        Intent signInActivity = new Intent(SignUpActivity.this,LoginActivity.class);
+        startActivity(signInActivity);
     }
 }
