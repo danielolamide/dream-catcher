@@ -20,6 +20,10 @@
     <string name="task_description">Task Description</string>
     <string name="task_name_hint">Task Name</string>
     <string name="task_description_hint">Task Description</string>
+    <string name="task_date_time">Date and Time</string>
+    <string name="pick_date">Pick Date</string>
+    <string name="pick_time">Pick Time</string>
+    <string name="create_task">Create Task</string>
     <string-array name="task_type_spinner">
         <item>Long Term Goal</item>
         <item>Short Term Goal</item>
