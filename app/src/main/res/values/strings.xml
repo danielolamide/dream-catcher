@@ -13,4 +13,15 @@
     <string name="sign_up">Sign Up</string>
     <string name="username_hint">Username</string>
     <string name="password_2_hint">Re-type Password</string>
+    <string name="create1">Create</string>
+    <string name="create2">New</string>
+    <string name="task_name">Task Name</string>
+    <string name="task_type">Task Type</string>
+    <string name="task_description">Task Description</string>
+    <string name="task_name_hint">Task Name</string>
+    <string name="task_description_hint">Task Description</string>
+    <string-array name="task_type_spinner">
+        <item>Long Term Goal</item>
+        <item>Short Term Goal</item>
+    </string-array>
 </resources>

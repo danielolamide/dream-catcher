@@ -10,6 +10,7 @@ import android.support.constraint.ConstraintSet;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,16 +44,16 @@ public class MainActivity extends AppCompatActivity {
         //Add Custom BG drawable to root layout
         dash_bg_holder.setId(View.generateViewId());
         dash_bg_holder.setImageBitmap(bitmapToDrawable(dash_bg,deviceWidth,bg_height));
-//        dash_layout.addView(dash_bg_holder);
+        dash_layout.addView(dash_bg_holder);
 
 
         //Create TextView1
-        TextView tView_Date  = new TextView(this);
+       TextView tView_Date  = new TextView(this);
         tView_Date.setId(View.generateViewId());
 
         tView_Date.setText(R.string.date);
         tView_Date.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         ));
         tView_Date.setTextSize(R.dimen.sub1);
@@ -62,9 +63,10 @@ public class MainActivity extends AppCompatActivity {
         dash_layout.addView(tView_Date);
 
         dash_set.clone(dash_layout);
-//        dash_set.connect(dash_bg_holder.getId(),ConstraintSet.TOP,dash_layout.getId(),ConstraintSet.TOP,0);
+        dash_set.connect(dash_bg_holder.getId(),ConstraintSet.TOP,dash_layout.getId(),ConstraintSet.TOP,0);
         dash_set.connect(tView_Date.getId(),ConstraintSet.TOP,dash_layout.getId(),ConstraintSet.TOP,60);
         dash_set.applyTo(dash_layout);
+
 
 
 

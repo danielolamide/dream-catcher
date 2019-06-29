@@ -84,7 +84,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/app_gradient"
         android:fontFamily="@font/open_sans"
-        android:onClick="login"
+        android:onClick="signIn"
         android:text="@string/sign_in"
         android:textColor="@android:color/white"
         android:textSize="@dimen/body2"

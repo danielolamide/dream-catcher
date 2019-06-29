@@ -22,60 +22,61 @@
     <!--app:layout_constraintStart_toStartOf="parent"-->
     <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-    <!--<TextView-->
-    <!--android:id="@+id/textView2"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginLeft="8dp"-->
-    <!--android:layout_marginTop="28dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:layout_marginRight="8dp"-->
-    <!--android:layout_marginBottom="22dp"-->
-    <!--android:text="FRI, MAY 16"-->
-    <!--android:textColor="@android:color/background_dark"-->
-    <!--android:textSize="@dimen/sub1"-->
-    <!--app:fontFamily="@font/open_sans_bold"-->
-    <!--app:layout_constraintBottom_toTopOf="@+id/textView"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.15"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <TextView
+    android:id="@+id/dateView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="28dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="22dp"
+    android:text="FRI, MAY 16"
+    android:elevation='2dp'
+    android:textColor="@android:color/background_dark"
+    android:textSize="@dimen/sub1"
+    app:fontFamily="@font/open_sans_bold"
+    app:layout_constraintBottom_toTopOf="@+id/textView"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.15"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
-    <!--<TextView-->
-    <!--android:id="@+id/textView"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginLeft="8dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:layout_marginRight="8dp"-->
-    <!--android:layout_marginBottom="24dp"-->
-    <!--android:text="Hello Daniel"-->
-    <!--android:textColor="@android:color/background_dark"-->
-    <!--android:textSize="@dimen/h6"-->
-    <!--app:fontFamily="@font/montserrat"-->
-    <!--app:layout_constraintBottom_toTopOf="@+id/textView3"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.167"-->
-    <!--app:layout_constraintStart_toStartOf="parent" />-->
+    <TextView
+    android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="24dp"
+    android:text="Hello Daniel"
+    android:elevation='2dp'
+    android:textColor="@android:color/background_dark"
+    android:textSize="@dimen/h6"
+    app:fontFamily="@font/montserrat"
+    app:layout_constraintBottom_toTopOf="@+id/textView3"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.167"
+    app:layout_constraintStart_toStartOf="parent" />
 
-    <!--<TextView-->
-    <!--android:id="@+id/textView3"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginLeft="8dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:layout_marginRight="8dp"-->
-    <!--android:layout_marginBottom="636dp"-->
-    <!--android:text="Upcoming tasks and goals"-->
-    <!--android:textColor="@android:color/background_dark"-->
-    <!--android:textSize="@dimen/sub1"-->
-    <!--app:fontFamily="@font/montserrat_bold"-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.425"-->
-    <!--app:layout_constraintStart_toStartOf="parent" />-->
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="636dp"
+        android:text="Upcoming tasks and goals"
+        android:elevation='2dp'
+        android:textColor="@android:color/background_dark"
+        android:textSize="@dimen/sub1"
+        app:fontFamily="@font/montserrat_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

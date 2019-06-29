@@ -6,4 +6,6 @@
     <dimen name="sub1">16sp</dimen>
     <dimen name="h3">48sp</dimen>
     <dimen name="body2">14sp</dimen>
+    <dimen name="h6_18">18sp</dimen>
+    <dimen name="pad4">4dp</dimen>
 </resources>
