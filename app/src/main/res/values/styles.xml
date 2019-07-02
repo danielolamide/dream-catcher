@@ -7,4 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="spinnerTheme">
+        <item name='android:textColor'>@color/blackGray</item>
+    </style>
 </resources>

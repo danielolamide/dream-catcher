@@ -1,21 +1,12 @@
 package com.example.dreamcatcher;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,60 +15,65 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        //Get dimensions based on screen size
-        int deviceWidth = metrics.widthPixels;
-        double bg_height_double = deviceWidth / 1.714;
-        int bg_height = (int) bg_height_double;
-        int deviceHeight = metrics.heightPixels;
-
-        //Get Root Layout
-        ConstraintLayout dash_layout = getWindow().getDecorView().findViewById(R.id.root_layout);
-        ConstraintSet dash_set = new ConstraintSet();
-
-        //Get Custom Background Drawable
-        Drawable dash_bg = getResources().getDrawable(R.drawable.dashboard_bg_custom);
-        ImageView dash_bg_holder = new ImageView(this);
-
-        //Add Custom BG drawable to root layout
-        dash_bg_holder.setId(View.generateViewId());
-        dash_bg_holder.setImageBitmap(bitmapToDrawable(dash_bg,deviceWidth,bg_height));
-        dash_layout.addView(dash_bg_holder);
-
-
-        //Create TextView1
-       TextView tView_Date  = new TextView(this);
-        tView_Date.setId(View.generateViewId());
-
-        tView_Date.setText(R.string.date);
-        tView_Date.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        ));
-        tView_Date.setTextSize(R.dimen.sub1);
-        tView_Date.setTextColor(Color.BLACK);
-        Typeface openSansBold = ResourcesCompat.getFont(this, R.font.open_sans_bold);
-        tView_Date.setTypeface(openSansBold);
-        dash_layout.addView(tView_Date);
-
-        dash_set.clone(dash_layout);
-        dash_set.connect(dash_bg_holder.getId(),ConstraintSet.TOP,dash_layout.getId(),ConstraintSet.TOP,0);
-        dash_set.connect(tView_Date.getId(),ConstraintSet.TOP,dash_layout.getId(),ConstraintSet.TOP,60);
-        dash_set.applyTo(dash_layout);
-
-
-
-
-
+        //Get current date
+        Calendar today = Calendar.getInstance();
+        String [] months = {"JAN","FEB","MAR","APR","MAY","JUN",
+                            "JUL","AUG","SEP","OCT","NOV","DEC"};
+        int year = (today.get(Calendar.YEAR)) % 100;
+        String month = months[today.get(Calendar.MONTH)];
+        int day_id = (today.get(Calendar.DAY_OF_WEEK));
+        int date_id = (today.get(Calendar.DAY_OF_MONTH));
+        String day = null;
+        switch(day_id){
+            case Calendar.SUNDAY:
+                day = "SUN";
+                break;
+            case Calendar.MONDAY:
+                day= "MON";
+                break;
+            case Calendar.TUESDAY:
+                day = "TUE";
+                break;
+            case Calendar.WEDNESDAY:
+                day = "WED";
+                break;
+            case Calendar.THURSDAY:
+                day = "THU";
+                break;
+            case Calendar.FRIDAY:
+                day = "FRI";
+                break;
+            case Calendar.SATURDAY:
+                day = "SAT";
+                break;
+            default:
+                day = "DAY";
+                break;
+        }
+        String currentYear = Integer.toString(year);
+        String suffix = getDateSuffix(date_id);
+        String day_of_month = Integer.toString(date_id);
+        String currentDay = getString(R.string.date,day_of_month,suffix,day,month,year);
+        TextView dateView = findViewById(R.id.date_text);
+        dateView.setText(currentDay);
     }
-    public Bitmap bitmapToDrawable(Drawable drawable, int width, int height){
-        Bitmap mutableBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
-        Canvas canvas  = new Canvas(mutableBitmap);
-        drawable.setBounds(0,0,width,height);
-        drawable.draw(canvas);
 
-        return mutableBitmap;
+    //Get suffix for date
+    public String getDateSuffix(int day){
+        if (day >= 11 && day <= 13) {
+            return "th";
+        }
+        switch (day % 10) {
+            case 1:
+                return "st";
+            case 2:
+                return "nd";
+            case 3:
+                return "rd";
+            default:
+                return "th";
+        }
     }
+
 }

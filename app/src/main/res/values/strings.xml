@@ -3,7 +3,8 @@
     <string name="s_icon_description">Splash Icon</string>
     <string name="copyright"><![CDATA[© 2019 Ola & Schatze]]></string>
     <string name="splash_name">dreamcatcher</string>
-    <string name="date">FRI, MAY 16</string>
+    <!--<string name="date">FRI, MAY 16</string>-->
+    <string name='date'>%1$s<sup>%2$s</sup> %3$s, %4$s %5$d </string>
     <string name="greeting_msg">Hello Daniel</string>
     <string name="dash_header_1">Upcoming tasks and goals</string>
     <string name="sign_in">Sign In</string>
@@ -24,6 +25,8 @@
     <string name="pick_date">Pick Date</string>
     <string name="pick_time">Pick Time</string>
     <string name="create_task">Create Task</string>
+    <string name="current_tasks">Current Tasks</string>
+    <string name="current_task_number">9</string>
     <string-array name="task_type_spinner">
         <item>Long Term Goal</item>
         <item>Short Term Goal</item>

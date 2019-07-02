@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id='@+id/home'
+        android:title="Home"
+        android:icon="@drawable/ic_home_turquiose_24dp" />
+    <item
+        android:id="@+id/tasks_menu"
+        android:title="Tasks"
+        android:icon="@drawable/ic_list_turquiose_24dp" />
+
+    <item
+        android:id="@+id/create_task_menu"
+        android:title="Create Task"
+        android:icon='@drawable/ic_add_turquiose_24dp'/>
+
+    <item
+        android:id="@+id/profile_menu"
+        android:title="My Profile"
+        android:icon="@drawable/ic_person_turquiose_24dp"/>
+
+
+</menu>
