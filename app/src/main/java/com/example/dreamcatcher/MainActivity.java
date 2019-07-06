@@ -1,14 +1,33 @@
 package com.example.dreamcatcher;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+    RecyclerView tasks_info;
+    TaskAdapter taskAdapter;
+    ArrayList<TaskModel> taskModels = new ArrayList<TaskModel>();
+
+//    public static final String[] activeTasks ={"1"};
+    public static final String[] taskNames = {"Learn to play piano","Learn to swim","Stop smoking"};
+    public static final String[] timeRemaining = {"12hrs 20min","1hr 30min","20hrs 10min"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +76,56 @@ public class MainActivity extends AppCompatActivity {
         String currentDay = getString(R.string.date,day_of_month,suffix,day,month,year);
         TextView dateView = findViewById(R.id.date_text);
         dateView.setText(currentDay);
+
+        for(int i = 0 ; i<taskNames.length; i++){
+            TaskModel taskModel = new TaskModel();
+            taskModel.setTaskName(taskNames[i]);
+            taskModel.setTaskTimeLeft(timeRemaining[i]);
+//            taskModel.setActiveTasks(activeTasks[0]);
+
+            taskModels.add(taskModel);
+
+        }
+        tasks_info = findViewById(R.id.recycler_task_details);
+        taskAdapter = new TaskAdapter(taskModels);
+        tasks_info.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        tasks_info.setItemAnimator(new DefaultItemAnimator());
+        tasks_info.setAdapter(taskAdapter);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Intent intent;
+                Toast toast;
+                switch(menuItem.getItemId()){
+                    case R.id.home_page:
+                        intent = new Intent(MainActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.tasks_menu:
+                         toast = Toast.makeText(MainActivity.this,"Task Menu",Toast.LENGTH_LONG);
+                        toast.show();
+                        break;
+                    case R.id.create_task_menu:
+                        intent = new Intent(MainActivity.this,CreateTask.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.profile_menu:
+                        toast = Toast.makeText(MainActivity.this,"Profile Menu",Toast.LENGTH_LONG);
+                        toast.show();
+                        break;
+                    default:
+                        intent = null;
+                        break;
+
+                }
+                return false;
+            }
+        });
     }
+
+
 
     //Get suffix for date
     public String getDateSuffix(int day){
