@@ -6,43 +6,88 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
+public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
+    public static final int TYPE_ACTIVE_COUNT = 0;
+    public static final int TYPE_TASKS = 1;
     List<TaskModel> TaskList;
     Context context;
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView activeTasks,taskName,taskRemainingTime;
-        public ViewHolder(View view){
-            super(view);
-//            activeTasks = view.findViewById(R.id.active_task_number);
-            taskName = view.findViewById(R.id.task_name);
-            taskRemainingTime = view.findViewById(R.id.time_left_task);
-        }
 
-    }
     public TaskAdapter(List<TaskModel> TaskList) {
         this.TaskList = TaskList;
     }
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_layout_item,parent,false);
-        ViewHolder viewHolder= new ViewHolder(view);
-        context = parent.getContext();
-        return viewHolder;
 
+    public class ActiveTasksViewHolder extends RecyclerView.ViewHolder{
+        public TextView activeTasks;
+
+        public ActiveTasksViewHolder(View view){
+            super(view);
+            activeTasks = view.findViewById(R.id.active_task_number);
+
+        }
+    }
+
+    public class TasksViewHolder extends RecyclerView.ViewHolder{
+        public TextView taskName, taskRemainingTime;
+
+        public TasksViewHolder(View view) {
+            super(view);
+            taskName = view.findViewById(R.id.task_name);
+            taskRemainingTime = view.findViewById(R.id.time_left_task);
+        }
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder,final int position){
+    public int getItemViewType(int position){
+       if(position < 1){
+           return TYPE_ACTIVE_COUNT;
+       }
+       else{
+           return TYPE_TASKS;
+       }
+    }
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View view;
+        switch (viewType){
+            case TYPE_ACTIVE_COUNT:
+                  view = LayoutInflater.from(parent.getContext()).inflate(R.layout.active_task_item,parent,false);
+                ActiveTasksViewHolder viewHolder= new ActiveTasksViewHolder(view);
+                context = parent.getContext();
+                return viewHolder;
+            case TYPE_TASKS:
+                view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_layout_item,parent,false);
+                TasksViewHolder viewHolder2 = new TasksViewHolder(view);
+                context = parent.getContext();
+                return viewHolder2;
+            default:
+                throw new IllegalArgumentException("Invalid");
+        }
+    }
 
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder,final int position){
         TaskModel taskModel = TaskList.get(position);
-//        holder.activeTasks.setText(taskModel.getActiveTasks());
-        holder.taskName.setText(taskModel.getTaskName());
-        holder.taskRemainingTime.setText(taskModel.getTaskTimeLeft());
+        switch(holder.getItemViewType()){
+            case TYPE_ACTIVE_COUNT:
+                ActiveTasksViewHolder atv = (ActiveTasksViewHolder) holder;
+                atv.activeTasks.setText(taskModel.getActiveTasks());
+                break;
+            case TYPE_TASKS:
+                TasksViewHolder tvh = (TasksViewHolder) holder;
+                tvh.taskName.setText(taskModel.getTaskName());
+                tvh.taskRemainingTime.setText(taskModel.getTaskTimeLeft());
+                break;
+            default:
+                throw new IllegalArgumentException("Failed");
+
+        }
     }
     @Override
     public int getItemCount(){

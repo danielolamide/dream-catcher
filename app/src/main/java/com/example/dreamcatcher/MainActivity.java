@@ -23,9 +23,9 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
     RecyclerView tasks_info;
     TaskAdapter taskAdapter;
-    ArrayList<TaskModel> taskModels = new ArrayList<TaskModel>();
+    ArrayList<TaskModel> taskModels = new ArrayList<>();
 
-//    public static final String[] activeTasks ={"1"};
+    public static final String[] activeTasks ={"1"};
     public static final String[] taskNames = {"Learn to play piano","Learn to swim","Stop smoking"};
     public static final String[] timeRemaining = {"12hrs 20min","1hr 30min","20hrs 10min"};
 
@@ -77,19 +77,18 @@ public class MainActivity extends AppCompatActivity {
         TextView dateView = findViewById(R.id.date_text);
         dateView.setText(currentDay);
 
+        TaskModel taskModel = new TaskModel();
+        taskModel.setActiveTasks(activeTasks[0]);
         for(int i = 0 ; i<taskNames.length; i++){
-            TaskModel taskModel = new TaskModel();
             taskModel.setTaskName(taskNames[i]);
             taskModel.setTaskTimeLeft(timeRemaining[i]);
-//            taskModel.setActiveTasks(activeTasks[0]);
-
             taskModels.add(taskModel);
 
         }
         tasks_info = findViewById(R.id.recycler_task_details);
         taskAdapter = new TaskAdapter(taskModels);
         tasks_info.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        tasks_info.setItemAnimator(new DefaultItemAnimator());
+//        tasks_info.setItemAnimator(new DefaultItemAnimator());
         tasks_info.setAdapter(taskAdapter);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
@@ -100,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast toast;
                 switch(menuItem.getItemId()){
                     case R.id.home_page:
-                        intent = new Intent(MainActivity.this,MainActivity.class);
-                        startActivity(intent);
                         break;
                     case R.id.tasks_menu:
                          toast = Toast.makeText(MainActivity.this,"Task Menu",Toast.LENGTH_LONG);
@@ -112,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.profile_menu:
-                        toast = Toast.makeText(MainActivity.this,"Profile Menu",Toast.LENGTH_LONG);
-                        toast.show();
+                        intent = new Intent(MainActivity.this,ProfileActivity.class);
+                        startActivity(intent);
                         break;
                     default:
                         intent = null;
