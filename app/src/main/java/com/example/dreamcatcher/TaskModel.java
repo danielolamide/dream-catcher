@@ -2,7 +2,7 @@ package com.example.dreamcatcher;
 
 public class TaskModel {
     private String taskName;
-//    private String activeTasks;
+    private String activeTasks;
     private String taskTimeLeft;
 
     public String getTaskName() {
@@ -13,13 +13,13 @@ public class TaskModel {
         this.taskName = taskName;
     }
 
-//    public String getActiveTasks() {
-//        return activeTasks;
-//    }
+    public String getActiveTasks() {
+        return activeTasks;
+    }
 
-//    public void setActiveTasks(String activeTasks) {
-//        this.activeTasks = activeTasks;
-//    }
+    public void setActiveTasks(String activeTasks) {
+        this.activeTasks = activeTasks;
+    }
 
     public String getTaskTimeLeft() {
         return taskTimeLeft;
