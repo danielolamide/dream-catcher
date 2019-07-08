@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -21,13 +22,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView tasks_info;
-    TaskAdapter taskAdapter;
-    ArrayList<TaskModel> taskModels = new ArrayList<>();
+
+//    ArrayList<TaskModel> taskModels = new ArrayList<>();
 
     public static final String[] activeTasks ={"1"};
     public static final String[] taskNames = {"Learn to play piano","Learn to swim","Stop smoking"};
     public static final String[] timeRemaining = {"12hrs 20min","1hr 30min","20hrs 10min"};
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,19 +79,16 @@ public class MainActivity extends AppCompatActivity {
         TextView dateView = findViewById(R.id.date_text);
         dateView.setText(currentDay);
 
-        TaskModel taskModel = new TaskModel();
-        taskModel.setActiveTasks(activeTasks[0]);
-        for(int i = 0 ; i<taskNames.length; i++){
-            taskModel.setTaskName(taskNames[i]);
-            taskModel.setTaskTimeLeft(timeRemaining[i]);
-            taskModels.add(taskModel);
-
-        }
+//        taskModel.setActiveTasks(activeTasks[0]);
+        RecyclerView tasks_info;
+        TaskAdapter taskAdapter;
+        ArrayList<TaskModel> taskModels = fill();
         tasks_info = findViewById(R.id.recycler_task_details);
-        taskAdapter = new TaskAdapter(taskModels);
-        tasks_info.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-//        tasks_info.setItemAnimator(new DefaultItemAnimator());
-        tasks_info.setAdapter(taskAdapter);
+        tasks_info.setItemAnimator(new DefaultItemAnimator());
+        mAdapter = taskAdapter = new TaskAdapter( taskModels,getApplication());
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        tasks_info.setLayoutManager(mLayoutManager);
+        tasks_info.setAdapter(mAdapter);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -122,7 +121,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    public ArrayList<TaskModel> fill() {
+        ArrayList<TaskModel> taskModels = new ArrayList<>();
+        for(int i = 0 ; i<taskNames.length; i++){
+            taskModels.add(new TaskModel(taskNames[i],timeRemaining[i]));
+        }
+        return taskModels;
+    }
 
     //Get suffix for date
     public String getDateSuffix(int day){

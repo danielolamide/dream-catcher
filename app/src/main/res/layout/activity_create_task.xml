@@ -68,6 +68,7 @@
         android:background="@drawable/white_border"
         android:elevation="2dp"
         android:popupBackground="#FFFFFF"
+        android:backgroundTint="@color/blackGray"
         style="@style/spinnerTheme"
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
