@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,21 +33,52 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
     }
 
+    public class ActiveViewHolder extends RecyclerView.ViewHolder{
+        public TextView activeTasks;
+
+        public ActiveViewHolder(View itemView) {
+            super(itemView);
+            activeTasks = itemView.findViewById(R.id.active_task_number);
+        }
+    }
+    private static final int TYPE_TASK = 1;
+    private static final int TYPE_ACTIVE_NUMBER = 2;
+
+//    @Override
+//    public int getItemViewType(int position){
+//        return position==0 ? TYPE_ACTIVE_NUMBER : TYPE_TASK;
+//    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view;
-        view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_layout_item,parent,false);
-        TasksViewHolder viewHolder2 = new TasksViewHolder(view);
-        context = parent.getContext();
-        return viewHolder2;
+//        switch (viewType){
+//            case TYPE_ACTIVE_NUMBER:
+//                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.active_task_item,parent,false);
+//                ActiveViewHolder viewHolder1 = new ActiveViewHolder(view);
+//                return viewHolder1;
+//            case TYPE_TASK:
+                view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_layout_item,parent,false);
+                TasksViewHolder viewHolder2 = new TasksViewHolder(view);
+                return viewHolder2;
+//            default:
+//                throw new IllegalArgumentException("Failed");
+//        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder,final int position){
         TaskModel taskModel = TaskList.get(position);
-        TasksViewHolder tvh = (TasksViewHolder) holder;
-        tvh.taskName.setText(taskModel.taskName);
-        tvh.taskRemainingTime.setText(taskModel.taskTimeLeft);
+//        if(holder.getItemViewType()==TYPE_ACTIVE_NUMBER){
+//            ActiveViewHolder avh = (ActiveViewHolder) holder;
+//            avh.activeTasks.setText(taskModel.activeTasks);
+//        }
+//        else if(holder.getItemViewType()==TYPE_TASK){
+
+            TasksViewHolder tvh = (TasksViewHolder) holder;
+            tvh.taskName.setText(taskModel.taskName);
+            tvh.taskRemainingTime.setText(taskModel.taskTimeLeft);
+//        }
     }
     @Override
     public int getItemCount(){
