@@ -100,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home_page:
                         break;
                     case R.id.tasks_menu:
-                         toast = Toast.makeText(MainActivity.this,"Task Menu",Toast.LENGTH_LONG);
-                        toast.show();
+                        intent = new Intent(MainActivity.this,ViewTasks.class);
+                        startActivity(intent);
                         break;
                     case R.id.create_task_menu:
                         intent = new Intent(MainActivity.this,CreateTask.class);
